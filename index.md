@@ -23,29 +23,22 @@ import numpy as np
 brain_regions = 300
 group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
 ```
-Or
-
-```R 
-brain_regions = 300
-group_matrix <- read.delim("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d{brain_regions}_ts2/netmats1.txt")
-Reshape(group_matrix,812,brain_regions,brain_regions)
-```
 
 ## Save subject-level matrices
 
-A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 300. We want a matrix saved for each subject, each session, and each resolution. Write a python or R function to do this.
+A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 300. We want a matrix saved for each subject, each session, and each resolution. Write a python function to do this.
 
 ## Analyze subject-level matrices
 
 1. Write a function you will (or others can) use to load the subject-level matrices.
 
-2. Please generate two anaylses in python or R, with a figure for each analysis. 
+2. Please generate two anaylses in python, with a figure for each analysis. 
 
 2.1 You have functional connectivity matrices and behavioral data for each subject; relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data. You can pick a single resulution for the matrix, or maybe you want to run an analysis that looks across the different resolutions. 
   
 2.2 Your choice. You can add your own twist to 1, or come up with your own
   
-3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. If you are in python, assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
+3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
 ### Support or Contact
 Having trouble? Email Max Bertolero if there are any technical issues.
