@@ -30,7 +30,7 @@ A big matrix like this is nice for speed, but part of your job will be tidying u
 
 ## Analyze subject-level matrices
 
-1. Write a function you will (or others could) use to load the subject-level matrices.
+1. Write a function you will (or others can) use to load the subject-level matrices.
 2. Please generate two anaylses in python, with a figure for each analysis.
   2a: Relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data
   2B: Your choice. You can add your own twist to 1, or come up with your own
