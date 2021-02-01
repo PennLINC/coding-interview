@@ -12,11 +12,11 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 You should also grab the [behavioral data](https://db.humanconnectome.org/REST/search/dict/Subject%20Information/results?format=csv&removeDelimitersFromFieldValues=true&restricted=0&project=HCP_1200)
 
-You should unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd300_ts2.tar.gz. The 300 here refers to the shape of the matrix, which is the number of *brain regions*. So, row zero, column 1 entry is the connectivity strength between node 0 and node 1. You can pick a single number of brain regions, or maybe you want to run an analysis that looks across the different numbers of brain regions. 
+You should unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd300_ts2.tar.gz. The 300 here refers to the shape of the matrix, which is the number of *brain regions*. So, row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
 
 ## Loading the matrices 
 
-There are two scanning sessions, so a file for each. You can analyze one, or both, or take the mean. The matrices are in a bit of weird format, where it's one big file, and the first dimension is subjects (there are 812), second is connectivity. We reshape it to be a subject by region by region:
+There are two scanning sessions, with a file for each (netmats1.txt,netmats2.txt). The matrices are in a bit of weird format, where it's one big file, and the first dimension is subjects (there are 812), second is connectivity. We reshape it to be a subject by region by region:
 
 ```python
 import numpy as np
@@ -24,11 +24,17 @@ brain_regions = 300
 group_matrix = np.loadtxt('HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt'%(brain_regions)).reshape(812,brain_regions,brain_regions)
 ```
 
-## Set up a git-hub repo with python code that we can clone and run
-You have functional connectivity matrices and behavioral data for each subject. Please generate two anaylses in a python script, with a figure for each analysis.
-Relate variance in connectivity to variance in a metric in the behavioral data
-1. Relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data
-2. Your choice. You can add your own twist to 1, or come up with your own
+## Save subject-level matrices
+
+A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 300. We want a matrix saved for each subject, each session, and each resolution. Write a function to do this.
+
+## Analyze subject-level matrices
+
+1. Write a function you will (or others could) use to load the matrices.
+2. Please generate two anaylses in a python script, with a figure for each analysis.
+  2a: Relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data
+  2B: Your choice. You can add your own twist to 1, or come up with your own
+  You can pick a single resulution for the matrix s, or maybe you want to run an analysis that looks across the different numbers of brain regions. You have functional connectivity matrices and behavioral data for each subject. 
 
 ### Support or Contact
 
