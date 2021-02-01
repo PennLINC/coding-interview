@@ -38,10 +38,15 @@ A big matrix like this is nice for speed, but part of your job will be tidying u
 ## Analyze subject-level matrices
 
 1. Write a function you will (or others can) use to load the subject-level matrices.
+
 2. Please generate two anaylses in python or R, with a figure for each analysis.
+
   2a: Relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data
+  
   2B: Your choice. You can add your own twist to 1, or come up with your own
+  
   You can pick a single resulution for the matrix s, or maybe you want to run an analysis that looks across the different numbers of brain regions. You have functional connectivity matrices and behavioral data for each subject. 
+  
 3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. If you are in python, assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
 ### Support or Contact
