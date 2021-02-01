@@ -26,6 +26,9 @@ group_matrix = np.loadtxt('HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/
 
 ## Set up a git-hub repo with python code that we can clone and run
 You have functional connectivity matrices and behavioral data for each subject. Please generate two anaylses in a python script, with a figure for each analysis.
+Relate variance in connectivity to variance in a metric in the behavioral data
+1. Relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data
+2. Your choice. You can add your own twist to 1, or come up with your own
 
 ### Support or Contact
 
