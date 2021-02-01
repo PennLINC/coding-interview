@@ -16,7 +16,7 @@ You should unzip the file once it is done downloading. You will see multiple net
 
 ## Loading the matrices 
 
-The matrices are in a bit of weird format, where it's one big file, and the first dimension is subjects, second is connectivity. We reshape it to be a subject by region by region:
+There are two scanning sessions, so a file for each. You can analyze one, or both, or take the mean. The matrices are in a bit of weird format, where it's one big file, and the first dimension is subjects (there are 812), second is connectivity. We reshape it to be a subject by region by region:
 
 ```python
 import numpy as np
