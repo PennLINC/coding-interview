@@ -29,6 +29,7 @@ Or
 brain_regions = 300
 group_matrix <- read.delim("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d{brain_regions}_ts2/netmats1.txt")
 Reshape(group_matrix,812,brain_regions,brain_regions)
+```
 
 ## Save subject-level matrices
 
