@@ -12,6 +12,9 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 You should also grab the [behavioral data](https://db.humanconnectome.org/REST/search/dict/Subject%20Information/results?format=csv&removeDelimitersFromFieldValues=true&restricted=0&project=HCP_1200)
 
+You should unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd300_ts2.tar.gz. The 300 here refers to the shape of the matrix, which is the number of *brain regions*. So, row zero, column 1 entry is the connectivity strength between node 0 and node 1. You can pick a single number of brain regions, or maybe you want to run an analysis that looks across the different numbers of brain regions. 
+
+
 ## Set up a git-hub repo with python code that we can clone and run
 You have functional connectivity matrices and behavioral data for each subject. Please generate two anaylses in a python script, with a figure for each analysis.
 
