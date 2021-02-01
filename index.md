@@ -1,6 +1,10 @@
-## Welcome to GitHub Pages
+## Welcome to our coding aspect of the interview
 
-You can use the [editor on GitHub](https://github.com/PennLINC/coding-interview/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+We want to get a sense of your ability to do some of more specific tasks in the PennLINC labratory. 
+As a data analyst, a lot of your job will be data downloading, wrangling, and processing.
+We also want to see your creative / scientific side. 
+
+Here, you will download functional connectivity matrices from the Human Connectome Project. This requires making an account on thier data downloader webiste [ConnectomeDB](https://db.humanconnectome.org/app/template/Login.vm)
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
