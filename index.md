@@ -1,5 +1,5 @@
 # Welcome to our coding aspect of the interview
-
+![Cartoon](./superman-sits-at-a-job-interview-jason-adam-katzenstein-01.png)
 We want to get a sense of your ability to do some of more specific tasks in the PennLINC labratory. As a data analyst, a lot of your job will be data downloading, wrangling, and processing. We also want to see your creative, scientific talents. 
 
 ## Download functional connectivity matrices from the Human Connectome Project
