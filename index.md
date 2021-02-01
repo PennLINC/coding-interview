@@ -41,4 +41,4 @@ A big matrix like this is nice for speed, but part of your job will be tidying u
 3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
 ### Support or Contact
-Having trouble? Email Max Bertolero if there are any technical issues. If you would prefer interview in a language other than python, please reach out to us.
+Having trouble? Email whomever has been facilitating your interview if there are any technical issues. If you would prefer interview in a language other than python, please reach out to us.
