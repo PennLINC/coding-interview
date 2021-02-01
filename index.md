@@ -1,10 +1,8 @@
 ## Welcome to our coding aspect of the interview
 
-We want to get a sense of your ability to do some of more specific tasks in the PennLINC labratory. 
-As a data analyst, a lot of your job will be data downloading, wrangling, and processing.
-We also want to see your creative / scientific side. 
+We want to get a sense of your ability to do some of more specific tasks in the PennLINC labratory. As a data analyst, a lot of your job will be data downloading, wrangling, and processing. We also want to see your creative, scientific talents. 
 
-Here, you will download functional connectivity matrices from the Human Connectome Project. This requires making an account on thier data downloader webiste [ConnectomeDB](https://db.humanconnectome.org/app/template/Login.vm)
+First, you will download functional connectivity matrices from the Human Connectome Project. This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats (1003 Subjects)](https://www.humanconnectome.org/storage/app/media/documentation/s1200/HCP1200-DenseConnectome+PTN+Appendix-July2017.pdf). Downloading requires making an account on thier data downloader webiste [ConnectomeDB](https://db.humanconnectome.org/app/template/Login.vm).
 
 Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
 
