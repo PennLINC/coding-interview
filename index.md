@@ -8,7 +8,7 @@ Downloading this data requires making an account on thier data downloader webist
 ### Aspera Connect Plug-In
 You will also need a plug-in called [Aspera Connect](https://downloads.asperasoft.com/connect2/)
 ### Download the data! 
-This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats (1003 Subjects)](https://www.humanconnectome.org/storage/app/media/documentation/s1200/HCP1200-DenseConnectome+PTN+Appendix-July2017.pdf). They call them Netmats, which is short for network matrices, which are functional connectivity matrices. Once you are logged in to ConnectomeDB, and you have the plug-in active, you can download the [Netmats](https://db.humanconnectome.org/app/action/ChooseDownloadResources?project=HCP_Resources&resource=GroupAvg&filePath=HCP1200_Parcellation_Timeseries_Netmats_recon2.zip)
+This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats (1003 Subjects)](https://www.humanconnectome.org/storage/app/media/documentation/s1200/HCP1200-DenseConnectome+PTN+Appendix-July2017.pdf). They call them Netmats, which is short for network matrices, which are functional connectivity matrices. Once you are logged in to ConnectomeDB, and you have the plug-in active, you can download the [Data](https://db.humanconnectome.org/app/action/ChooseDownloadResources?project=HCP_Resources&resource=GroupAvg&filePath=HCP1200_Parcellation_Timeseries_Netmats_recon2.zip). This should take roughly 30 minutes.
 
 You should also grab the [behavioral data](https://db.humanconnectome.org/REST/search/dict/Subject%20Information/results?format=csv&removeDelimitersFromFieldValues=true&restricted=0&project=HCP_1200)
 
