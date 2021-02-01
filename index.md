@@ -1,10 +1,10 @@
 # Welcome to our coding interview
 ![Cartoon](./superman-sits-at-a-job-interview-jason-adam-katzenstein-01.png)
-We want to get a sense of your ability to do some of more specific tasks in the PennLINC labratory. As a data analyst, a lot of your job will be data downloading, wrangling, and processing. We also want to see your creative, scientific talents. 
+We want to get a sense of your ability to do some of more specific tasks in the PennLINC laboratory. As a data analyst, a lot of your job will be data downloading, wrangling, and processing. We also want to see your creative, scientific talents. 
 
 ## Download functional connectivity matrices from the Human Connectome Project
 ### Connectome DB Account
-Downloading this data requires making an account on thier data downloader webiste [ConnectomeDB](https://db.humanconnectome.org/app/template/Login.vm).
+Downloading this data requires making an account on their data downloader website [ConnectomeDB](https://db.humanconnectome.org/app/template/Login.vm).
 ### Aspera Connect Plug-In
 You will also need a plug-in called [Aspera Connect](https://downloads.asperasoft.com/connect2/)
 ### Download the data! 
@@ -32,7 +32,7 @@ A big matrix like this is nice for speed, but part of your job will be tidying u
 
 1. Write a function you will (or others can) use to load the subject-level matrices.
 
-2. Please generate two anaylses in python, with a figure for each analysis. First, You have functional connectivity matrices and behavioral data for each subject; relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data. You can pick a single resulution for the matrix, or maybe you want to run an analysis that looks across the different resolutions. Second, come up with your own analysis. This can be a twist on the first analysis, or something different completely.
+2. Please generate two analyses in python, with a figure for each analysis. First, You have functional connectivity matrices and behavioral data for each subject; relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data. You can pick a single resolution for the matrix, or maybe you want to run an analysis that looks across the different resolutions. Second, come up with your own analysis. This can be a twist on the first analysis, or something different completely.
   
 3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
