@@ -12,7 +12,7 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 You should also grab the [behavioral data](https://db.humanconnectome.org/REST/search/dict/Subject%20Information/results?format=csv&removeDelimitersFromFieldValues=true&restricted=0&project=HCP_1200)
 
-You should unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd300_ts2.tar.gz. The 300 here refers to the shape of the matrix, which is the number of *brain regions*. So, row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
+You should unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. So, row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
 
 ## Loading the matrices 
 
@@ -20,21 +20,38 @@ There are two scanning sessions, with a file for each (netmats1.txt,netmats2.txt
 
 ```python
 import numpy as np
-brain_regions = 300
+brain_regions = 200
 group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
 ```
 
 ## Save subject-level matrices
 
-A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 300. We want a matrix saved for each subject, each session, and each resolution. Write a python function to do this.
+A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 200. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and the 300 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/ 
 
-## Analyze subject-level matrices
+You will have to use the 'subjectIDs_recon2.txt' file to do this. These subject IDs are ordered in the same order as the matrix. So:
 
-1. Write a function you will (or others can) use to load the subject-level matrices.
+```
+matrix_102006 = group_matrix[0]
+matrix_100610 = group_matrix[1]
+```
 
-2. Please generate two analyses in python, with a figure for each analysis. First, You have functional connectivity matrices and behavioral data for each subject; relate variance in the connectivity matrices to variance in a metric (or metrics) in the behavioral data. You can pick a single resolution for the matrix, or maybe you want to run an analysis that looks across the different resolutions. Second, come up with your own analysis. This can be a twist on the first analysis, or something different completely.
+Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300. Write a function to do this so that it can be run automatically.
+
+Now, in your netmats/ directory, you should have two directories, one for the 200 and one for the 300. Then, within those, you should have your *netmats1/2.txt*, and then another directory that has the subject matrices.
+
+## Analyze subject-level behavior matrices
+
+Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). We want to analyze the "WM_Task_2bk_Acc" and the "Language_Task_Story_Avg_Difficulty_Level". You will also notice there are subjects in that file with no matrices. Let's clean up the dataframe by only keep the columns "Subject", "WM_Task_2bk_Acc", and "Language_Task_Story_Avg_Difficulty_Level", and then create a new fourth column that denotes if the subject has a matrix.
+
+Okay, now we have a nice clean dataframe (should be shape 4,812), and subject level matrices, where each matrix is the mean across the two sessions for that subject.
+
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where results[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc.
+
+Now do this for 300 regions. Now do this for 200 and 300 regions for the "Language_Task_Story_Avg_Difficulty_Level". 
+
+Plot your results! I reccomend [seaborn.heatmap](https://seaborn.pydata.org/generated/seaborn.heatmap.html). Try to make the figure look as nice as possible. 
   
-3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices and then generate the figures. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
+3. Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices, delete the data we don't need, and then generate the results and figure. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
 ### Support or Contact
 Having trouble? Email whomever has been facilitating your interview if there are any technical issues. If you would prefer interview in a language other than python, please reach out to us.
