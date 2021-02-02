@@ -27,7 +27,7 @@ group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/
 
 ## Save subject-level matrices
 
-Open up a blank python script. We are going to want to have two command line arguements. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved. This will allow us to tell the script where our data is stored and then run your code.
+Open up a blank python script. We are going to want to have two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved. This will allow us to tell the script where our data is stored and then run your code.
 
 A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 200. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and the 300 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/ 
 
