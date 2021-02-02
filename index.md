@@ -8,7 +8,11 @@ Downloading this data requires making an account on their data downloader websit
 ### Aspera Connect Plug-In
 You will also need a plug-in called [Aspera Connect](https://downloads.asperasoft.com/connect2/)
 ### Download the data! 
-This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats (1003 Subjects)](https://www.humanconnectome.org/storage/app/media/documentation/s1200/HCP1200-DenseConnectome+PTN+Appendix-July2017.pdf). We (i.e., you) are going to analyze the Netmats. They call them Netmats, which is short for network matrices, which are functional connectivity matrices. Once you are logged in to ConnectomeDB, and you have the plug-in active, you can download the [brain data](https://db.humanconnectome.org/app/action/ChooseDownloadResources?project=HCP_Resources&resource=GroupAvg&filePath=HCP1200_Parcellation_Timeseries_Netmats_recon2.zip). This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
+This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats (1003 Subjects)](https://www.humanconnectome.org/storage/app/media/documentation/s1200/HCP1200-DenseConnectome+PTN+Appendix-July2017.pdf). We (i.e., you) are going to analyze the Netmats. They call them Netmats, which is short for network matrices, which are functional connectivity matrices. Once you are logged in to ConnectomeDB, and you have the plug-in active, you can download the data. It will be on [this page](https://db.humanconnectome.org/data/projects/HCP_1200). Click the boxes in red:
+![hcp](./hcp_website.png)
+
+
+This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
 Unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Row zero, column 1 entry is the connectivity strength between node 0 and node 1. Since functional connectivity is not directed, entry 0,1 and entry 1,0 are identical.
 
