@@ -13,7 +13,7 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Anyways, let's be sure to make this clear when we unzip; open up a blank python script to start writing your code.
+Unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Anyways, let's be sure to make this clear when we unzip; open up a blank python script to start writing your code. From here on out, everything should be in your python script, and we should be able to run it.
 
 ```python 
 import os
@@ -27,16 +27,16 @@ There are two scanning sessions, with a file for each (netmats1.txt,netmats2.txt
 ```python
 import numpy as np
 brain_regions = 200
-group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
+group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
 # row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
 # since functional connectivity is not directed, entry 0,1 and entry 1,0 are identical.
 ```
 
 ## Save subject-level matrices
 
-We are going to want to have two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved. This will allow us to tell the script where our data is stored and then run your code.
+We are going to want to add two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved. This will allow us to tell the script where our data is stored and then run your code.
 
-A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 200. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and the 300 region matrices in a sub-directory in ../HCP_PTN1200_recon2/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/ 
+A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 200. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/subject_matrices and the 300 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/subject_matrices (you'll have to make that subject_matrices sub-directory).
 
 Write code to do this so it can be run automatically.
 
