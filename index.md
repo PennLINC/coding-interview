@@ -57,7 +57,7 @@ Clean up the behavior file by loading it as a dataframe with [pandas](https://pa
 
 Okay, now we have a nice clean dataframe with four columns, and subject level matrices, where each matrix is the mean across the two sessions for that subject.
 
-A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrix that has every subject's matrix.
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
 
 ```python
 import scipy.stats
@@ -65,9 +65,11 @@ import scipy.stats
 mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0)
 node_i = 0
 node_j = 1
-result_matrix[node_i,node_j] = scipy.stats.pearsonr(mean_netmat[:,node_i,node_j],df.WM_Task_2bk_Acc[df.has_matrix==True].values)[0]
+result_matrix[node_i,node_j] = scipy.stats.pearsonr(mean_netmat[:,node_i,node_j],df.WM_Task_2bk_Acc.values)[0]
 ```
-Now, a lot of your job will be debugging code other people wrote. This code is syntactically correct, but I forgot a critical step to pair the data in the df to the big matrix. Find what I missed. Also, once you fix my code, you will have to run it for every node_i and node_j combination.
+A lot of your job will be debugging code other people wrote. You will notice this code does not work! Fix what I messed up. 
+
+Once you fix my code, you will have to run it for every node_i and node_j combination.
 
 Now do this for 300 regions. Now do this for 200 and 300 regions for the "Language_Task_Story_Avg_Difficulty_Level". 
 
