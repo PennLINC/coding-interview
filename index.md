@@ -65,7 +65,7 @@ from scipy.stats import pearsonr
 mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0)
 node_i = 0
 node_j = 1
-result_matrix[node_i,node_j] = pearsonr(group_matrix[:,node_i,node_j],df.WM_Task_2bk_Acc[df.has_matrix==True].values)[0]
+result_matrix[node_i,node_j] = pearsonr(mean_netmat[:,node_i,node_j],df.WM_Task_2bk_Acc[df.has_matrix==True].values)[0]
 ```
 
 Now, a lot of your job will be debugging code other people wrote. This code is syntactically correct, but I forgot a critical step to pair the data in the df to the big matrix. Find what I missed.
