@@ -77,7 +77,7 @@ Plot your 4 matrix results! I use [seaborn.heatmap](https://seaborn.pydata.org/g
 ```python
 import seaborn as sns
 import matplotlib.pylab as plt
-sns.heatmat(result_matrix)
+sns.heatmap(result_matrix)
 plt.savefig('result.pdf')
 plt.show()
 ```
