@@ -27,7 +27,7 @@ There are two scanning sessions, with a file for each (netmats1.txt,netmats2.txt
 ```python
 import numpy as np
 brain_regions = 200
-group_matrix = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
+netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
 # row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
 # since functional connectivity is not directed, entry 0,1 and entry 1,0 are identical.
 ```
@@ -57,19 +57,33 @@ Clean up the behavior file by loading it as a dataframe with [pandas](https://pa
 
 Okay, now we have a nice clean dataframe (should be shape 4,812), and subject level matrices, where each matrix is the mean across the two sessions for that subject.
 
-A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc.
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrix that has every subject's matrix.
 
 ```python
 from scipy.stats import pearsonr
+
+mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0)
 node_i = 0
 node_j = 1
 result_matrix[node_i,node_j] = pearsonr(group_matrix[:,node_i,node_j],df.WM_Task_2bk_Acc[df.has_matrix==True].values)[0]
 ```
 
+Now, a lot of your job will be debugging code other people wrote. This code is syntactically correct, but I forgot a critical step to pair the data in the df to the big matrix. Find what I missed.
+
 Now do this for 300 regions. Now do this for 200 and 300 regions for the "Language_Task_Story_Avg_Difficulty_Level". 
 
 Plot your 4 matrix results! I use [seaborn.heatmap](https://seaborn.pydata.org/generated/seaborn.heatmap.html). Try to make the figure look as nice as possible. 
-  
+
+```python
+import seaborn as sns
+import matplotlib.pylab as plt
+sns.heatmat(result_matrix)
+plt.savefig('result.pdf')
+plt.show()
+```
+
+Bonus points for getting all four matrices in a single figure.
+
 ## GitHub
 Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices, delete the data we don't need, and then generate the results and figure. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
 
