@@ -13,12 +13,13 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Unzip the file once it is done downloading. You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Anyways, let's be sure to make this clear when we unzip; open up a blank python script to start writing your code. From here on out, everything should be in your python script, and we should be able to run it.
+Open up a blank python script to start writing your code! You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Anyways, let's be sure to make this clear when we unzip; from here on out, everything should be in your python script, and we should be able to run it. Here is how you should unzip the data:
 
 ```python 
 import os
 os.system('mkdir netmats200 && tar -xf netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz -C netmats200')
 ```
+Do this for both the 200 and 300 resolutions.
 
 ## Loading the matrices 
 
@@ -34,42 +35,42 @@ netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s
 
 ## Save subject-level matrices
 
-We are going to want to add two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved. This will allow us to tell the script where our data is stored and then run your code.
+We are going to want to add two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved / where you downloaded it. This will allow us to tell the script where our data is stored and then run your code.
 
-A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. The kind people the HCP have made matrices at each resolution from 15-300 brain regions. Above you can see I loaded 200. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/subject_matrices and the 300 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/subject_matrices (you'll have to make that subject_matrices sub-directory).
+A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/subject_matrices and the 300 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/subject_matrices (you'll have to make that subject_matrices sub-directory).
 
 Write code to do this so it can be run automatically.
 
 You will have to use the 'subjectIDs_recon2.txt' file to do this. These subject IDs are ordered in the same order as the matrix. So:
 
 ```
-matrix_102006 = group_matrix[0]
-matrix_100610 = group_matrix[1]
+matrix_102006 = netmat_matrix1[0]
+matrix_100610 = netmat_matrix1[1]
 ```
 
-Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically.
+Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically. Don't delete those subject-level matrices, though! 
 
-Now, in your netmats/ directory, you should have two directories, one for the 200 and one for the 300. Then, within those, you should have your *netmats1/2.txt*, and then another directory that has the subject matrices.
+In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ directories, you should have your *netmats1/2.txt*, and then another directory in each that has the subject matrices at that resolution.
 
 ## Analyze subject-level behavior matrices
 
 Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "WM_Task_2bk_Acc" and the "Language_Task_Story_Avg_Difficulty_Level" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "WM_Task_2bk_Acc", and "Language_Task_Story_Avg_Difficulty_Level", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
 
-Okay, now we have a nice clean dataframe with four columns, and subject level matrices, where each matrix is the mean across the two sessions for that subject.
+Okay, now we have a nice clean dataframe with four columns.
 
-A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in the dataframe you cleaned up. You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in "df". You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
 
 ```python
 import scipy.stats
-
-mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0)
+mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0) #get the mean across sessions
 node_i = 0
 node_j = 1
+result_matrix = np.zeros((200,200))
 result_matrix[node_i,node_j] = scipy.stats.pearsonr(mean_netmat[:,node_i,node_j],df.WM_Task_2bk_Acc.values)[0]
 ```
 A lot of your job will be debugging code other people wrote. You will notice this code does not work! Fix what I messed up. 
 
-Once you fix my code, you will have to run it for every node_i and node_j combination.
+Once you fix my code, you run it for every node_i and node_j combination so result_matrix is filled, except you can ignore the diagonal.
 
 Now do this for 300 regions. Now do this for 200 and 300 regions for the "Language_Task_Story_Avg_Difficulty_Level". 
 
