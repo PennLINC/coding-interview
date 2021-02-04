@@ -13,8 +13,9 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. Your code should be able to be run with:
+Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. We are going to want to add three command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved / where you downloaded it. This will allow us to tell the script where our data is stored and then run your code.
 
+Your code should be able to be run with:
 ```bash
 python solution_your_name.py data_root behavioral_csv output_dir
 ```
@@ -36,8 +37,6 @@ netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s
 
 ## Save subject-level matrices
 
-We are going to want to add two command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved / where you downloaded it. This will allow us to tell the script where our data is stored and then run your code.
-
 A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/subject_matrices and the 300 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/subject_matrices (you'll have to make that subject_matrices sub-directory).
 
 Write code to do this so it can be run automatically.
@@ -48,8 +47,6 @@ You will have to use the 'subjectIDs_recon2.txt' file to do this. These subject 
 matrix_102006 = netmat_matrix1[0]
 matrix_100610 = netmat_matrix1[1]
 ```
-
-Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically. Don't delete those subject-level matrices, though! 
 
 In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/ directories, you should have your *netmats1/2.txt*, and then another directory in each that has the subject matrices at that resolution.
 
@@ -86,6 +83,9 @@ plt.show()
 ```
 
 Bonus points for getting all four matrices in a single figure.
+
+## Remove unused files 
+Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically. Don't delete those subject-level matrices, though! 
 
 ## GitHub
 Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices, delete the data we don't need, and then generate the results and figure. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
