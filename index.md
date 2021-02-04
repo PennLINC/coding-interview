@@ -50,11 +50,11 @@ In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmat
 
 ## Analyze subject-level behavior matrices
 
-Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "WM_Task_2bk_Acc" and the "Language_Task_Story_Avg_Difficulty_Level" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "WM_Task_2bk_Acc", and "Language_Task_Story_Avg_Difficulty_Level", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
+Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "WM_Task_2bk_Acc" and the "Language_Task_Story_Avg_Difficulty_Level" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "Flanker_AgeAdj", and "ProcSpeed_AgeAdj", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
 
 Okay, now we have a nice clean dataframe with four columns.
 
-A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "WM_Task_2bk_Acc" column in "df". You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "Flanker_AgeAdj" column in "df". You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
 
 ```python
 import scipy.stats
@@ -62,13 +62,13 @@ mean_netmat = np.mean([netmat_matrix1,netmat_matrix2],axis=0) #get the mean acro
 node_i = 0
 node_j = 1
 result_matrix = np.zeros((200,200))
-result_matrix[node_i,node_j] = scipy.stats.pearsonr(mean_netmat[:,node_i,node_j],df.WM_Task_2bk_Acc.values)[0]
+result_matrix[node_i,node_j] = scipy.stats.pearsonr(mean_netmat[:,node_i,node_j],df.Flanker_AgeAdj.values)[0]
 ```
 A lot of your job will be debugging code other people wrote. You will notice this code does not work! Fix what I messed up. 
 
 Once you fix my code, you run it for every node_i and node_j combination so result_matrix is filled, except you can ignore the diagonal.
 
-Now do this for 300 regions. Now do this for 200 and 300 regions for the "Language_Task_Story_Avg_Difficulty_Level". 
+Now do this for 300 regions. Now do this for 200 and 300 regions for the "ProcSpeed_AgeAdj". 
 
 Plot your 4 matrix results! I use [seaborn.heatmap](https://seaborn.pydata.org/generated/seaborn.heatmap.html). Try to make the figure look as nice as possible. 
 
