@@ -54,7 +54,7 @@ Clean up the behavior file by loading it as a dataframe with [pandas](https://pa
 
 Okay, now we have a nice clean dataframe with four columns.
 
-A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "Flanker_AgeAdj" column in "df". You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and WM_Task_2bk_Acc. We can use the big matrices that has every subject's matrix for session 1 and session 2.
+A lot of the time, we want to know if variance in the strength of a connection (i.e., an entry in the matrices you have) correlates with a given behavior. Thus, run a Pearson *r* correlation between each connection in the 200 resolution matrix across subjects, and the "Flanker_AgeAdj" column in "df". You should store these correlations in a 200x200 matrix, where matrix[0,1] is the Pearson *r* between the strength of the connection from region 0 to region 1 across subjects and Flanker_AgeAdj. We can use the big matrices that has every subject's matrix for session 1 and session 2.
 
 ```python
 import scipy.stats
