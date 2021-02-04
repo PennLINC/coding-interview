@@ -50,7 +50,7 @@ In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmat
 
 ## Analyze subject-level behavior matrices
 
-Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "WM_Task_2bk_Acc" and the "Language_Task_Story_Avg_Difficulty_Level" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "Flanker_AgeAdj", and "ProcSpeed_AgeAdj", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
+Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "Flanker_AgeAdj" and the "ProcSpeed_AgeAdj" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "Flanker_AgeAdj", and "ProcSpeed_AgeAdj", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
 
 Okay, now we have a nice clean dataframe with four columns.
 
