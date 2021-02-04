@@ -13,7 +13,12 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. 
+Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. Your code should be able to be run with:
+
+```bash
+python solution_your_name.py data_root behavioral_csv output_dir
+```
+Where data_root is where we keep downloaded the data, behavioral_csv is where we keep the behavioral data file, and output_dir is where we want the results saved.
 
 You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this parameter as the *resolution*. Anyways, let's be sure to make this clear when we unzip. Make sure to call the directories netmats200 and netmats300.
 
@@ -50,7 +55,7 @@ In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmat
 
 ## Analyze subject-level behavior matrices
 
-Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "Flanker_AgeAdj" and the "ProcSpeed_AgeAdj" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "Flanker_AgeAdj", and "ProcSpeed_AgeAdj", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix".
+Clean up the behavior file by loading it as a dataframe with [pandas](https://pandas.pydata.org/pandas-docs/stable/index.html). Let's call it "df". We want to analyze the "Flanker_AgeAdj" and the "ProcSpeed_AgeAdj" columns. You will also notice there are subjects in the behavior file with no matrices. Let's clean up the dataframe by only keeping the columns "Subject", "Flanker_AgeAdj", and "ProcSpeed_AgeAdj", and then create a new fourth column that denotes if the subject has a matrix with True or False. Call this column "has_matrix". Save this as a behavior.csv. 
 
 Okay, now we have a nice clean dataframe with four columns.
 
