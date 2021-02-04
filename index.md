@@ -13,13 +13,9 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Open up a blank python script to start writing your code! You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this paramter as the *resolution*. Anyways, let's be sure to make this clear when we unzip; from here on out, everything should be in your python script, and we should be able to run it. Here is how you should unzip the data:
+Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. 
 
-```python 
-import os
-os.system('mkdir netmats200 && tar -xf netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz -C netmats200')
-```
-Do this for both the 200 and 300 resolutions.
+You will see multiple netmats_* files. For example, netmats_3T_HCP1200_MSMAll_ICAd200_ts2.tar.gz. The 200 here refers to the shape of the matrix, which is the number of *brain regions*. We refer to this parameter as the *resolution*. Anyways, let's be sure to make this clear when we unzip. Make sure to call the directories netmats200 and netmats300.
 
 ## Loading the matrices 
 
