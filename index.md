@@ -46,7 +46,7 @@ matrix_100610 = netmat_matrix1[1]
 
 Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically. Don't delete those subject-level matrices, though! 
 
-In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ directories, you should have your *netmats1/2.txt*, and then another directory in each that has the subject matrices at that resolution.
+In summary, in your netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/ and netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/ directories, you should have your *netmats1/2.txt*, and then another directory in each that has the subject matrices at that resolution.
 
 ## Analyze subject-level behavior matrices
 
