@@ -13,7 +13,7 @@ This specific dataset is called the [HCP1200 Parcellation + Timeseries + Netmats
 
 This should take roughly 30 minutes and will require 10GB of space. Please let us know if your personal computing resources do not allow for this.
 
-Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github, so you can start tracking your code now if you want. We are going to want to add three command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved / where you downloaded it. This will allow us to tell the script where our data is stored and then run your code.
+Open up a blank python script to start writing your code! From here on out, everything should be in your python script, and we should be able to run it. We are going to ask you to upload your code to github. Please make a *private* repo. You can start tracking your code now if you want. We are going to want to add three command line arguments. One for the location of the behavioral data file (the entire path), and then the root path to where the brain data is saved / where you downloaded it. This will allow us to tell the script where our data is stored and then run your code.
 
 Your code should be able to be run with:
 ```bash
