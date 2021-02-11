@@ -88,7 +88,13 @@ Bonus points for getting all four matrices in a single figure.
 Storage also costs money. Let's go through and delete all the files except the original large *netmats1/2.txt* matrix files for the 200 and 300 resolutions. Write code to do this so it can be run automatically. Don't delete those subject-level matrices, though! 
 
 ## GitHub
-Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices, delete the data we don't need, and then generate the results and figure. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want.
+Save your script (or scripts) as a github repo. We should be able to clone your repo and, given that we have the same HCP Data, run your code to save the subject-level matrices, delete the data we don't need, and then generate the results and figure. Assume we have the basic [Anaconda](https://www.anaconda.com/products/individual) python packages, but feel free to include a dependency outside of that if you want. Finally, add us as collaborators so that we can see your code:
+
+sydney.covitz@gmail.com
+username: scovitz
+
+mbertolero@me.com
+username: mb3152
 
 ### Support or Contact
 Having trouble? Email whomever has been facilitating your interview if there are any technical issues. If you would prefer interview in a language other than python, please reach out to us.
