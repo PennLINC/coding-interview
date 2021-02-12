@@ -39,6 +39,8 @@ netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s
 
 A big matrix like this is nice for speed, but part of your job will be tidying up data so mistakes are less likely to be made by others. We want a matrix saved for each subject, for both the 200 and 300 resolutions. Note that you will have to load netmats1.txt and netmats2.txt, and get the mean for each subject. Save the 200 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_ICAd200_ts2/subject_matrices and the 300 region mean matrix for each subject in ../HCP_PTN1200_recon2/netmats300/netmats/3T_HCP1200_MSMAll_ICAd300_ts2/subject_matrices (you'll have to make that subject_matrices sub-directory).
 
+You can save the subject matrices in a .txt or .npy format.
+
 Write code to do this so it can be run automatically.
 
 You will have to use the 'subjectIDs_recon2.txt' file to do this. These subject IDs are ordered in the same order as the matrix. So:
