@@ -30,7 +30,7 @@ There are two scanning sessions, with a file for each (netmats1.txt,netmats2.txt
 ```python
 import numpy as np
 brain_regions = 200
-netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
+netmat_matrix1 = np.loadtxt("HCP_PTN1200_recon2/netmats200/netmats/3T_HCP1200_MSMAll_d%s_ts2/netmats1.txt"%(brain_regions)).reshape(812,brain_regions,brain_regions)
 # row zero, column 1 entry is the connectivity strength between node 0 and node 1. 
 # since functional connectivity is not directed, entry 0,1 and entry 1,0 are identical.
 ```
